@@ -1,4 +1,3 @@
-a = input()
-b = input()
+cost = int(input())
 
-print(a+b)
+print(cost // 10000)
