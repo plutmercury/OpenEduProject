@@ -7,4 +7,3 @@ D = int(input())
 X = int(input())
 
 print(A <= X <= B and not (C <= X <= D))
-
