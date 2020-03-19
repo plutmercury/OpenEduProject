@@ -20,30 +20,20 @@
 # Twenty two
 
 
-fin = open('input_w06e03.txt', 'r', encoding='utf8')
-fout = open('output_w06e03.txt', 'w', encoding='utf8')
+fin = open('input_w06e06.txt', 'r', encoding='utf8')
 
-s = fin.read()
-arr_s = s.split()
+lines = fin.readlines()
 
-word_count = {}
+counter_lines = {}
 
-for word in arr_s:
-    if word in word_count:
-        word_count[word] += 1
+for l in lines:
+    llen = len(l)
+    if llen in counter_lines:
+        counter_lines[llen].append(l)
     else:
-        word_count[word] = 1
+        counter_lines[llen] = [l]
 
-count_word = {}
-for key, value in word_count.items():
-    if value in count_word:
-        count_word[value].append(key)
-    else:
-        count_word[value] = [key]
+max_length = sorted(counter_lines, reverse=True)[0]
 
-sorted_count_word = sorted(count_word, reverse=True)
-for i in sorted_count_word:
-    print(*sorted(count_word[i]), end=" ", file=fout)
-
-fin.close()
-fout.close()
+for l in sorted(counter_lines[max_length]):
+    print(l)
