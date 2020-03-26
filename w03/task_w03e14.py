@@ -15,7 +15,6 @@
 
 phone = input()
 
-phone = '+7123458912'
 good_phone = '+7'
 
 if phone.startswith('+7') and len(phone) == 11:
