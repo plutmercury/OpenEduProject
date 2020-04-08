@@ -1,6 +1,7 @@
 # подсчет супермаркетов по Москве
 from bs4 import BeautifulSoup
 from urllib.request import urlopen
+from urllib.request import urlretrieve
 
 minlat = 55.5671
 minlon = 37.3611
@@ -18,8 +19,10 @@ for i in range(100):
         nminlon = minlon + dlon * j
         nmaxlon = minlon + dlon * (j + 1)
 
-        response = urlopen('https://www.openstreetmap.org/api/0.6/map?bbox=' + str(nminlon) + '%2C' + str(nminlat) + '%2C' + str(nmaxlon) + '%2C' + str(nmaxlat))
-        xml = response.read().decode('utf-8')
+        # response = urlopen('https://www.openstreetmap.org/api/0.6/map?bbox=' + str(nminlon) + '%2C' + str(nminlat) + '%2C' + str(nmaxlon) + '%2C' + str(nmaxlat))
+        # xml = response.read().decode('utf-8')
+        urlretrieve('https://www.openstreetmap.org/api/0.6/map?bbox=' + str(nminlon) + '%2C' + str(nminlat) + '%2C' + str(nmaxlon) + '%2C' + str(nmaxlat), 'osm/map.osm')
+        xml = open('osm/map.osm', 'r', encoding='utf8').read()
 
         # xml = open('map1.osm', 'r', encoding='utf8').read()
         soup = BeautifulSoup(xml, 'lxml')

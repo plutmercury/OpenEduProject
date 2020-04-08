@@ -9,7 +9,7 @@
 
 from bs4 import BeautifulSoup
 
-xml = open('input_w08.osm', 'r', encoding='utf8')
+xml = open('input_w08e01.osm', 'r', encoding='utf8')
 soup = BeautifulSoup(xml, 'xml')
 
 no_one_tag = 0
